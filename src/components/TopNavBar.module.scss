@@ -1,0 +1,12 @@
+@import '../../styles/main.scss';
+
+.TopNav {
+
+  .LogoFigure {
+    $height: 50px;
+
+    position: relative;
+    height: $height;
+    width: calc($height * 2.8);
+  }
+}
