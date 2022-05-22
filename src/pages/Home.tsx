@@ -1,14 +1,11 @@
-import Head from "next/head";
 import { NextPage } from "next";
-import { TopNavBar } from "@/components";
+import { MainLayout } from "../layout";
+import { Container } from "@/components";
 
 export const Home: NextPage = () => {
   return (
-    <>
-      <Head>
-        <title>Home Page</title>
-      </Head>
-      <TopNavBar />
-    </>
+    <MainLayout title="Home Page">
+      <Container>Hello</Container>
+    </MainLayout>
   );
 };

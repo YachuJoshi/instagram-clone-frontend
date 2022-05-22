@@ -1,0 +1,51 @@
+@import '../../styles/main.scss';
+
+.Nav {
+  padding: $spacing-lg;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .Figure {
+    position: relative;
+    height: 50px;
+    width: 140px;
+
+    @include media-breakpoint-up(sm) {
+      height: 42px;
+      width: 120px;
+    }
+  }
+
+  .InputContainer {
+    display: none;
+
+    @include media-breakpoint-up(md) {
+      display: flex;
+      align-items: center;
+      column-gap: 16px;
+      padding: 10px 24px;
+      background-color: #EFEFEF;
+      border-radius: $spacing-sm;
+    }
+
+    .Icon {
+      height: 16px;
+      width: 16px;
+      color: #898989;
+    }
+
+    input {
+      background-color: #EFEFEF;
+      border: none;
+      outline: none;
+      font-size: 16px;
+
+      &::placeholder {
+        font-size: 16px;
+        color: #898989;
+      }
+    }
+
+  }
+}

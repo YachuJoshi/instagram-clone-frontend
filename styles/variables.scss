@@ -1,0 +1,12 @@
+@import './colors.scss';
+
+// SPACING
+$base-spacing: 4px;
+$spacing-xs: $base-spacing; // 4px
+$spacing-sm: $base-spacing * 2; // 8px
+$spacing-md: $base-spacing * 4; // 16px
+$spacing-lg: $base-spacing * 5; // 20px
+$spacing-xl: $base-spacing * 8; // 32px
+$spacing-2xl: $base-spacing * 16; // 64px
+
+$container-max-width: 936px;

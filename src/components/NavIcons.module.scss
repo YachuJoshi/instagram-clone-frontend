@@ -1,0 +1,33 @@
+@import '../../styles/main.scss';
+
+ul.IconList {
+  display: flex;
+  gap: $spacing-md;
+
+  @include media-breakpoint-up(sm) {
+    gap: $spacing-lg;
+  }
+
+  li.Item {
+    &.Hidden {
+      display: none;
+
+      @include media-breakpoint-up(sm) {
+        display: block;
+      }
+    }
+
+    .Icon {
+      height: 28px;
+      width: 28px;
+    }
+
+    .Figure {
+      position: relative;
+      height: 28px;
+      width: 28px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+  }
+}
