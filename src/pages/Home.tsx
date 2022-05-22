@@ -1,8 +1,6 @@
-import { NextPage } from "next";
 import Head from "next/head";
+import { NextPage } from "next";
 import { TopNavBar } from "@/components";
-
-import styles from "./Home.module.scss";
 
 export const Home: NextPage = () => {
   return (
