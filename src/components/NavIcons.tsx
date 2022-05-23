@@ -1,13 +1,12 @@
 import Image from "next/image";
 import cx from "classnames";
-
-import User from "../static/user.jpg";
 import { CgAddR } from "react-icons/cg";
 import { FiHeart } from "react-icons/fi";
 import { FaRegCompass } from "react-icons/fa";
 import { IoHomeSharp } from "react-icons/io5";
 import { RiMessengerLine } from "react-icons/ri";
 
+import User from "../static/user.jpg";
 import styles from "./NavIcons.module.scss";
 
 export const NavIcons = () => {

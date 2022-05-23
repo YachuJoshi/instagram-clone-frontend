@@ -1,3 +1,4 @@
+@import './main.scss';
 @import "./reset.scss";
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 
@@ -18,6 +19,11 @@ html,
 body {
   box-sizing: border-box;
   font-family: 'Ubuntu', sans-serif;
+}
+
+body {
+  background-color: $body-bg-color;
+  color: $text-color;
 }
 
 a {

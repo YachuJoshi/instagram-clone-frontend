@@ -1,9 +1,15 @@
+import cx from "classnames";
 import styles from "./Button.module.scss";
 
-interface ButtonProps {
-  children: React.ReactNode;
-}
+type ButtonProps = {
+  children: string;
+  className?: string;
+} & Omit<React.ComponentProps<"button">, "children">;
 
-export const Button = ({ children }: ButtonProps) => {
-  return <button className={styles.Button}>{children}</button>;
+export const Button = ({ children, className = "", ...rest }: ButtonProps) => {
+  return (
+    <button className={cx(styles.Button, className)} {...rest}>
+      {children}
+    </button>
+  );
 };

@@ -1,7 +1,7 @@
 @import '../../styles/main.scss';
 
 .Nav {
-  padding: $spacing-lg;
+  padding: $spacing-lg $spacing-md;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -46,6 +46,5 @@
         color: #898989;
       }
     }
-
   }
 }
