@@ -3,10 +3,9 @@
 ul.IconList {
   display: flex;
   flex-flow: row-reverse;
-  gap: $spacing-md;
+  gap: $spacing-lg;
 
   @include media-breakpoint-up(sm) {
-    gap: $spacing-lg;
     flex-flow: row;
   }
 

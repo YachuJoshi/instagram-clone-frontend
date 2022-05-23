@@ -1,0 +1,32 @@
+@import '../../styles/main.scss';
+
+.BottomWrapper {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+
+  @include media-breakpoint-up(sm) {
+    display: none;
+  }
+
+  hr {
+    border: 1px solid #1a1a1a;
+  }
+
+  .BottomNav {
+    width: 100%;
+    padding: $spacing-md $spacing-lg;
+
+    .IconList {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+
+      .Icon {
+        height: 28px;
+        width: 28px;
+      }
+    }
+  }
+}

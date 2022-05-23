@@ -1,0 +1,9 @@
+@import '../../styles/main.scss';
+
+.Main {
+  padding-top: 90px;
+
+  @include media-breakpoint-up(sm) {
+    padding-top: 82px;
+  }
+}

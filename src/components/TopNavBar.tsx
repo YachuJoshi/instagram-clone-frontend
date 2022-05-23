@@ -6,7 +6,7 @@ import styles from "./TopNavBar.module.scss";
 
 export const TopNavBar = () => {
   return (
-    <header>
+    <header className={styles.Header}>
       <nav className={styles.Nav}>
         <figure className={styles.Figure}>
           <Image

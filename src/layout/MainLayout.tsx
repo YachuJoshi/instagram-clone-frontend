@@ -1,5 +1,7 @@
 import Head from "next/head";
-import { TopNavBar } from "@/components";
+import { TopNavBar, BottomNav } from "@/components";
+
+import styles from "./MainLayout.module.scss";
 
 interface LayoutProps {
   title?: string;
@@ -13,7 +15,8 @@ export const MainLayout = ({ title = "", children }: LayoutProps) => {
         <title>{title}</title>
       </Head>
       <TopNavBar />
-      <main>{children}</main>
+      <main className={styles.Main}>{children}</main>
+      <BottomNav />
     </>
   );
 };

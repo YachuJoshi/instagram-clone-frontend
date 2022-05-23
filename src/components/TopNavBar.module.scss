@@ -1,49 +1,58 @@
 @import '../../styles/main.scss';
 
-.Nav {
-  padding: $spacing-lg $spacing-md;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.Header {
+  position: fixed;
+  top: 0;
+  width: 100%;
 
-  .Figure {
-    position: relative;
-    height: 50px;
-    width: 140px;
+  .Nav {
+    padding: $spacing-lg $spacing-md;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-    @include media-breakpoint-up(sm) {
-      height: 42px;
-      width: 120px;
-    }
-  }
+    .Figure {
+      position: relative;
+      height: 50px;
+      width: 140px;
 
-  .InputContainer {
-    display: none;
-
-    @include media-breakpoint-up(md) {
-      display: flex;
-      align-items: center;
-      column-gap: 16px;
-      padding: 10px 24px;
-      background-color: #EFEFEF;
-      border-radius: $spacing-sm;
+      @include media-breakpoint-up(sm) {
+        height: 42px;
+        width: 120px;
+      }
     }
 
-    .Icon {
-      height: 16px;
-      width: 16px;
-      color: #898989;
-    }
+    .InputContainer {
+      display: none;
 
-    input {
-      background-color: #EFEFEF;
-      border: none;
-      outline: none;
-      font-size: 16px;
+      @include media-breakpoint-up(md) {
+        display: flex;
+        align-items: center;
+        column-gap: 16px;
+        padding: 10px 24px;
+        // background-color: #EFEFEF;
+        background-color: $input-bg-color;
+        border-radius: $spacing-sm;
+      }
 
-      &::placeholder {
+      .Icon {
+        height: 16px;
+        width: 16px;
+        color: #c3c1c1;
+      }
+
+      input {
+        // background-color: #EFEFEF;
+        background-color: $input-bg-color;
+        border: none;
+        outline: none;
         font-size: 16px;
-        color: #898989;
+        color: $white-100;
+
+        &::placeholder {
+          font-size: 16px;
+          color: #d6d3d3;
+        }
       }
     }
   }
