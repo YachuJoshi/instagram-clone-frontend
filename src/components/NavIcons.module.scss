@@ -9,6 +9,10 @@ ul.IconList {
     flex-flow: row;
   }
 
+  @include media-breakpoint-up(lg) {
+    gap: 24px;
+  }
+
   li.Item {
     &.Hidden {
       display: none;
@@ -21,6 +25,11 @@ ul.IconList {
     .Icon {
       height: 28px;
       width: 28px;
+
+      @include media-breakpoint-up(sm) {
+        height: 24px;
+        width: 24px;
+      }
     }
 
     .Figure {
