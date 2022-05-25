@@ -1,1 +1,23 @@
 @import '../../styles/main.scss';
+
+.Button {
+  $button-color: #007ac5;
+
+  cursor: pointer;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: $white-100;
+  padding: 10px 24px;
+  font-family: inherit;
+  background-color: $button-color;
+  transition: all 0.2s ease-out;
+
+  &:hover {
+    background-color: darken($button-color, 8);
+  }
+
+  &:disabled {
+    background-color: #16547b;
+  }
+}

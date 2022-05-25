@@ -7,10 +7,41 @@
   align-items: center;
   justify-content: center;
 
-  .Logo {
-    $height: 70px;
+  .Wrapper {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    gap: 40px;
+    border: 1px solid transparent;
 
-    height: $height;
-    width: $height * 2.8;
+    @include media-breakpoint-up(md) {
+      padding: 40px;
+      border: 1px solid #2e2e2e;
+    }
+
+    .Logo {
+      $height: 70px;
+
+      height: $height;
+      width: $height * 2.8;
+    }
+
+    form {
+      display: flex;
+      flex-flow: column;
+      gap: 10px;
+
+      input {
+        padding: 12px;
+
+        &::placeholder {
+          font-size: 14px;
+        }
+      }
+
+      .Button {
+        margin-top: 10px;
+      }
+    }
   }
 }

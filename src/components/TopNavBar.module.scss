@@ -44,20 +44,6 @@
         width: 16px;
         color: #c3c1c1;
       }
-
-      input {
-        // background-color: #EFEFEF;
-        background-color: $input-bg-color;
-        border: none;
-        outline: none;
-        font-size: 16px;
-        color: $white-100;
-
-        &::placeholder {
-          font-size: 16px;
-          color: #d6d3d3;
-        }
-      }
     }
   }
 }

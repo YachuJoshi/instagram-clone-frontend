@@ -1,0 +1,15 @@
+@import '../../styles/main.scss';
+
+.Input {
+  // background-color: #EFEFEF;
+  background-color: $input-bg-color;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: $white-100;
+
+  &::placeholder {
+    font-size: 16px;
+    color: #d6d3d3;
+  }
+}
