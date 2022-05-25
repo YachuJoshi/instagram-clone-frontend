@@ -1,17 +1,22 @@
 import { NextPage } from "next";
-import { MainLayout } from "src/layout";
+import { FormEvent } from "react";
+import { MainLayout } from "../layout";
 import { Image, InputField, Container, Button } from "@/components";
 
 import styles from "./Login.module.scss";
 
 export const Login: NextPage = () => {
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+  }
+
   return (
-    <MainLayout>
+    <MainLayout title="Login Page">
       <Container className={styles.Container}>
         <div className={styles.Wrapper}>
           <Image src="/ig_logo.svg" alt="Logo" className={styles.Logo} />
 
-          <form>
+          <form onSubmit={onSubmit}>
             <InputField type="text" placeholder="Enter Username" />
             <InputField type="password" placeholder="Password" />
             <Button type="submit" className={styles.Button}>
