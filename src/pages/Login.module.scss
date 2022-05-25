@@ -1,0 +1,16 @@
+@import '../../styles/main.scss';
+
+.Container {
+  height: 100vh;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+
+  .Logo {
+    $height: 70px;
+
+    height: $height;
+    width: $height * 2.8;
+  }
+}

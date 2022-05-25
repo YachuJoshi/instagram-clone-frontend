@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { Image } from "./Image";
 import { NavIcons } from "./NavIcons";
 import { Container } from "./Container";
 import { RiSearchLine } from "react-icons/ri";
@@ -10,14 +10,7 @@ export const TopNavBar = () => {
     <header className={styles.Header}>
       <Container>
         <nav className={styles.Nav}>
-          <figure className={styles.Figure}>
-            <Image
-              alt="Logo"
-              src="/ig_logo.svg"
-              layout="fill"
-              objectFit="contain"
-            />
-          </figure>
+          <Image alt="Logo" src="/ig_logo.svg" className={styles.Logo} />
           <div className={styles.InputContainer}>
             <RiSearchLine className={styles.Icon} />
             <input type="search" placeholder="Search" />

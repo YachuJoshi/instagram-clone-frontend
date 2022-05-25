@@ -15,14 +15,14 @@
       padding: $spacing-lg 0;
     }
 
-    .Figure {
-      position: relative;
-      height: 50px;
-      width: 140px;
+    .Logo {
+      $height: 50px;
+
+      height: $height;
+      width: $height * 2.8;
 
       @include media-breakpoint-up(sm) {
         height: 42px;
-        width: 120px;
       }
     }
 

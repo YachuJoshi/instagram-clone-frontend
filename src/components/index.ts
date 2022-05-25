@@ -1,3 +1,4 @@
+export { Image } from "./Image";
 export { Button } from "./Button";
 export { TopNavBar } from "./TopNavBar";
 export { BottomNav } from "./BottomNav";

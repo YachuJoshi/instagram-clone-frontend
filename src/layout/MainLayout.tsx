@@ -1,4 +1,6 @@
 import Head from "next/head";
+import cx from "classnames";
+import { useRouter } from "next/router";
 import { TopNavBar, BottomNav } from "@/components";
 
 import styles from "./MainLayout.module.scss";
@@ -9,14 +11,23 @@ interface LayoutProps {
 }
 
 export const MainLayout = ({ title = "", children }: LayoutProps) => {
+  const router = useRouter();
+  const isLogin = router.pathname === "/login";
+
   return (
     <>
       <Head>
         <title>{title}</title>
       </Head>
-      <TopNavBar />
-      <main className={styles.Main}>{children}</main>
-      <BottomNav />
+      {!isLogin && <TopNavBar />}
+      <main
+        className={cx(styles.Main, {
+          [styles.Login]: isLogin,
+        })}
+      >
+        {children}
+      </main>
+      {!isLogin && <BottomNav />}
     </>
   );
 };

@@ -6,4 +6,8 @@
   @include media-breakpoint-up(sm) {
     padding-top: 82px;
   }
+
+  &.Login {
+    padding-top: 0;
+  }
 }
