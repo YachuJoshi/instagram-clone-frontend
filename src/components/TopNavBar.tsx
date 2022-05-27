@@ -11,7 +11,12 @@ export const TopNavBar = () => {
     <header className={styles.Header}>
       <Container>
         <nav className={styles.Nav}>
-          <Image alt="Logo" src="/ig_logo.svg" className={styles.Logo} />
+          <Image
+            alt="Logo"
+            src="/ig_logo.svg"
+            className={styles.Logo}
+            priority
+          />
           <div className={styles.InputContainer}>
             <RiSearchLine className={styles.Icon} />
             <InputField type="search" placeholder="Search" />
