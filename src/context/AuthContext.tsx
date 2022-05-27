@@ -32,7 +32,8 @@ export const AuthProvider = ({ children }: Props) => {
         setUser(parseJWT(data.accessToken));
         localStorage.setItem("accessToken", data.accessToken);
         localStorage.setItem("refreshToken", data.refreshToken);
-        router.push("/");
+        notify("success", "Login Successful!");
+        void router.push("/");
       } catch (e) {
         if (e instanceof AxiosError) {
           const responseError = e as AxiosError<string>;

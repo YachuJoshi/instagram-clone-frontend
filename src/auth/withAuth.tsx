@@ -11,14 +11,14 @@ export function withAuth<T>(Component: React.ComponentType<T>) {
     useEffect(() => {
       const accessToken = localStorage.getItem("accessToken");
       if (!accessToken) {
-        router.push("/login");
+        void router.push("/login");
         return;
       }
 
       try {
         parseJWT(accessToken);
-        setValidJWT(true);
         // Valid JWT
+        setValidJWT(true);
       } catch (e) {
         // Invalid JWT
         setValidJWT(false);

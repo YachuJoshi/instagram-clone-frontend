@@ -1,16 +1,18 @@
-import { useState } from "react";
 import { NextPage } from "next";
+import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
 import { MainLayout } from "../layout";
 import { notify } from "../utils";
+import { useAuth } from "../context";
 import { Image, InputField, Container, Button } from "@/components";
 
 import styles from "./Login.module.scss";
-import { useAuth } from "@/context";
 
 export const Login: NextPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { login } = useAuth();
+  const { user, login } = useAuth();
+  const router = useRouter();
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -21,6 +23,12 @@ export const Login: NextPage = () => {
 
     await login({ username, password });
   }
+
+  useEffect(() => {
+    if (user) {
+      void router.push("/");
+    }
+  }, [user, router]);
 
   return (
     <MainLayout title="Login Page">
