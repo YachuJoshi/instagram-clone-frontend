@@ -18,6 +18,7 @@ export const Login: NextPage = () => {
     if (!username || !password) {
       return notify("error", "Necessary Fields Are Missing!");
     }
+
     await login({ username, password });
   }
 

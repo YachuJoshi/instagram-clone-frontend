@@ -1,8 +1,8 @@
 import { useState, useCallback, useContext, createContext } from "react";
-import { login as loginUser } from "../services";
-import { parseJWT, notify } from "../utils";
+import { AxiosBasicCredentials, AxiosError } from "axios";
 import { User } from "../types";
-import { AxiosBasicCredentials, AxiosResponse, AxiosError } from "axios";
+import { parseJWT, notify } from "../utils";
+import { login as loginUser } from "../services";
 
 interface Props {
   children: React.ReactNode;
@@ -29,8 +29,10 @@ export const AuthProvider = ({ children }: Props) => {
         localStorage.setItem("refreshToken", data.refreshToken);
       } catch (e) {
         if (e instanceof AxiosError) {
-          const { data: message } = e.response as AxiosResponse<string, any>;
-          return notify("error", message);
+          const responseError = e as AxiosError<string>;
+          if (responseError?.response) {
+            return notify("error", responseError.response.data);
+          }
         }
       }
     },

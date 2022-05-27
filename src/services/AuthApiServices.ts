@@ -9,7 +9,7 @@ export interface Response {
 export const login = async ({
   username,
   password,
-}: AxiosBasicCredentials): Promise<AxiosResponse<Response, any>> => {
+}: AxiosBasicCredentials): Promise<AxiosResponse<Response>> => {
   return await api.post("/auth/login", {
     username,
     password,
