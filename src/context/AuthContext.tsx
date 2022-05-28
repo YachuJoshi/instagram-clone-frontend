@@ -1,6 +1,12 @@
-import { useState, useCallback, useContext, createContext } from "react";
-import { AxiosBasicCredentials, AxiosError } from "axios";
+import {
+  useState,
+  useEffect,
+  useCallback,
+  useContext,
+  createContext,
+} from "react";
 import { useRouter } from "next/router";
+import { AxiosBasicCredentials, AxiosError } from "axios";
 import { User } from "../types";
 import { parseJWT, notify } from "../utils";
 import { login as loginUser } from "../services";
@@ -23,6 +29,18 @@ export const AuthProvider = ({ children }: Props) => {
   const [user, setUser] = useState({} as User);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem("accessToken");
+    if (!accessToken) return;
+
+    try {
+      const decodedUser = parseJWT(accessToken);
+      setUser(decodedUser);
+    } catch (e) {
+      return;
+    }
+  }, []);
 
   const login = useCallback(
     async ({ username, password }: AxiosBasicCredentials) => {

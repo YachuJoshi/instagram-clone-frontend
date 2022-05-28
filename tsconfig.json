@@ -2,8 +2,11 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
+      "@": ["src"],
+      "@/types": ["src/types"],
       "@/pages": ["src/pages"],
       "@/context": ["src/context"],
+      "@/services": ["src/services"],
       "@/components": ["src/components"]
     },
     "target": "es5",

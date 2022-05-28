@@ -25,7 +25,7 @@ export const Login: NextPage = () => {
   }
 
   useEffect(() => {
-    if (user) {
+    if (Object.keys(user).length > 0) {
       void router.push("/");
     }
   }, [user, router]);

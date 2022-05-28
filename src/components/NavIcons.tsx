@@ -1,5 +1,7 @@
-import Image from "next/image";
+import Link from "next/link";
 import cx from "classnames";
+import { useAuth } from "../context";
+import { Image } from "../components";
 import { CgAddR } from "react-icons/cg";
 import { FiHeart } from "react-icons/fi";
 import { FaRegCompass } from "react-icons/fa";
@@ -10,6 +12,8 @@ import User from "../static/user.jpg";
 import styles from "./NavIcons.module.scss";
 
 export const NavIcons = () => {
+  const { user } = useAuth();
+
   return (
     <ul className={styles.IconList}>
       <li className={cx(styles.Item, styles.Hidden)}>
@@ -28,9 +32,17 @@ export const NavIcons = () => {
         <FiHeart className={styles.Icon} />
       </li>
       <li className={cx(styles.Item, styles.Hidden)}>
-        <figure className={styles.Figure}>
-          <Image alt="Logo" src={User} layout="fill" objectFit="contain" />
-        </figure>
+        <Link href={`/${user.username}`}>
+          <a>
+            <Image
+              alt="Logo"
+              src={User}
+              layout="fill"
+              objectFit="contain"
+              className={styles.Figure}
+            />
+          </a>
+        </Link>
       </li>
     </ul>
   );
