@@ -16,8 +16,8 @@ function ProfilePage({ user }: Props) {
   return <Profile user={user} />;
 }
 
-export const getStaticProps: GetStaticProps = async (context) => {
-  const { username } = context.params as CustomParams;
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const { username } = params as CustomParams;
   const user = await getUserByUsername(username);
   return {
     props: {
@@ -31,7 +31,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return {
     paths: users.map((user) => ({
       params: {
-        username: String(user.username),
+        username: user.username,
       },
     })),
     fallback: false,
