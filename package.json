@@ -10,6 +10,8 @@
     "lint:fix": "eslint . --ext .ts --fix"
   },
   "dependencies": {
+    "@cloudinary/react": "^1.4.0",
+    "@cloudinary/url-gen": "^1.8.0",
     "axios": "^0.27.2",
     "classnames": "^2.3.1",
     "next": "12.1.6",
