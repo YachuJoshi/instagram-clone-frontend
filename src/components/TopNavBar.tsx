@@ -5,18 +5,23 @@ import { InputField } from "./InputField";
 import { RiSearchLine } from "react-icons/ri";
 
 import styles from "./TopNavBar.module.scss";
+import Link from "next/link";
 
 export const TopNavBar = () => {
   return (
     <header className={styles.Header}>
       <Container>
         <nav className={styles.Nav}>
-          <Image
-            alt="Logo"
-            src="/ig_logo.svg"
-            className={styles.Logo}
-            priority
-          />
+          <Link href="/">
+            <a>
+              <Image
+                alt="Logo"
+                src="/ig_logo.svg"
+                className={styles.Logo}
+                priority
+              />
+            </a>
+          </Link>
           <div className={styles.InputContainer}>
             <RiSearchLine className={styles.Icon} />
             <InputField type="search" placeholder="Search" />

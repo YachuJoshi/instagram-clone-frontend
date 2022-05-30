@@ -1,6 +1,7 @@
 @import '../../styles/main.scss';
 
 .BottomWrapper {
+  background-color: $body-bg-color;
   position: fixed;
   bottom: 0;
   width: 100%;

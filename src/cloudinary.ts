@@ -1,7 +1,12 @@
 import { Cloudinary } from "@cloudinary/url-gen";
 
-export const cloudinary = new Cloudinary({
+const cld = new Cloudinary({
   cloud: {
-    cloudName: process.env.CLOUDINARY_NAME,
+    cloudName: "yachujoshi2",
   },
 });
+
+export const getImageURL = (publicID: string) => {
+  const image = cld.image(publicID);
+  return image.toURL();
+};

@@ -21,3 +21,34 @@
     width: 100%;
   }
 }
+
+.Grid {
+  margin-top: 32px;
+  display: grid;
+  gap: 3px;
+  grid-template-columns: repeat(3, 1fr);
+
+  @include media-breakpoint-up(md) {
+    padding: 0 20px;
+    gap: 28px;
+  }
+
+  @include media-breakpoint-up(xl) {
+    padding: 0;
+  }
+}
+
+.Post {
+  position: relative;
+}
+
+.StackWrapper {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+
+  .Stack {
+    height: 40px;
+    width: 40px;
+  }
+}
