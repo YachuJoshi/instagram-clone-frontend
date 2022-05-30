@@ -9,7 +9,7 @@ interface Media extends BaseEntity {
   url: string;
 }
 
-interface Post extends BaseEntity {
+export interface Post extends BaseEntity {
   id: number;
   caption: string;
   medias: Media[];

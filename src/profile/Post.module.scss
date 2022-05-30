@@ -1,0 +1,16 @@
+@import '../../styles/main.scss';
+
+.Post {
+  position: relative;
+}
+
+.StackWrapper {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+
+  .Stack {
+    height: 40px;
+    width: 40px;
+  }
+}
