@@ -1,0 +1,66 @@
+@import '../../styles/main.scss';
+
+.PostDetails {
+  padding: 24px 20px;
+
+  .IconWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+    .LeftIcons {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+
+      .Icon {
+        height: 24px;
+        width: 24px;
+      }
+    }
+
+    .SaveIcon {
+      color: $white-100;
+      height: 22px;
+      width: 22px;
+    }
+  }
+
+  .IndexWrapper {
+    transform: translateX(-36px);
+    display: flex;
+    gap: 4px;
+
+    .IndexCircle {
+      height: 8px;
+      width: 8px;
+      border-radius: 20px;
+      background-color: #0a9eff;
+      content: '';
+    }
+  }
+
+  .Reviews {
+    .LikeText {
+      margin-bottom: 16px;
+
+      span {
+        font-weight: 600;
+      }
+    }
+
+    .CaptionContainer {
+      margin-bottom: 24px;
+
+      .CaptionUsername {
+        font-weight: 600;
+      }
+    }
+
+    .Date {
+      font-size: 14px;
+      color: rgba($white-100, 0.6)
+    }
+  }
+}

@@ -1,0 +1,18 @@
+@import '../../styles/main.scss';
+
+.Post {
+  background-color: $black-100;
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+
+  .Media {
+    flex: 0 0 100%;
+    height: 300px;
+    width: 100%;
+
+    @include media-breakpoint-up(sm) {
+      height: 500px;
+    }
+  }
+}

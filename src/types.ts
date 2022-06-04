@@ -1,10 +1,10 @@
 interface BaseEntity {
   isActive?: boolean;
-  createdAt?: Date;
-  updatedAt?: Date;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
-interface Media extends BaseEntity {
+export interface Media extends BaseEntity {
   id: number;
   url: string;
   height: string;

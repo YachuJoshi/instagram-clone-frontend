@@ -8,7 +8,6 @@ import { FaRegCompass } from "react-icons/fa";
 import { IoHomeSharp } from "react-icons/io5";
 import { RiMessengerLine } from "react-icons/ri";
 
-import User from "../static/user.jpg";
 import styles from "./NavIcons.module.scss";
 
 export const NavIcons = () => {
@@ -36,7 +35,7 @@ export const NavIcons = () => {
           <a>
             <Image
               alt="Logo"
-              src={User}
+              src="/user.jpg"
               layout="fill"
               objectFit="contain"
               className={styles.Figure}

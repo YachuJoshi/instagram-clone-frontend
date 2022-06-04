@@ -1,6 +1,5 @@
-import { Image } from "../components";
 import { User } from "../types";
-import UserImg from "../static/user.jpg";
+import { Image } from "../components";
 
 import styles from "./ProfileHeader.module.scss";
 
@@ -15,7 +14,7 @@ export const ProfileHeader = ({ user }: Props) => {
       <h1 className={styles.UserName}>{user.username}</h1>
       <div className={styles.UserProfile}>
         <Image
-          src={UserImg}
+          src="/user.jpg"
           alt={user.username}
           className={styles.DefaultPicture}
         />
