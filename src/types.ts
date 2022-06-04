@@ -7,6 +7,8 @@ interface BaseEntity {
 interface Media extends BaseEntity {
   id: number;
   url: string;
+  height: string;
+  width: string;
 }
 
 export interface Post extends BaseEntity {

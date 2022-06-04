@@ -2,6 +2,8 @@
 
 .Header {
   position: fixed;
+  z-index: 10;
+  background-color: $body-bg-color;
   top: 0;
   width: 100%;
 

@@ -22,7 +22,7 @@ export function withAuth<T>(Component: React.ComponentType<T>) {
       } catch (e) {
         // Invalid JWT
         setValidJWT(false);
-        router.push("/login");
+        void router.push("/login");
       }
     }, [router]);
 
