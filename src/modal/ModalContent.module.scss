@@ -35,6 +35,10 @@
       width: 600px;
     }
 
+    @include media-breakpoint-up(lg) {
+      width: 700px;
+    }
+
     .User {
       padding: 16px 20px;
       display: flex;

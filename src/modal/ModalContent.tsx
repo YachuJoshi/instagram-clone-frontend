@@ -1,3 +1,4 @@
+import { useState } from "react";
 import cx from "classnames";
 import { Post } from "../types";
 import { Image } from "../components";
@@ -12,6 +13,7 @@ interface Props {
   onModalClose: () => void;
 }
 export const ModalContent = ({ username, post, onModalClose }: Props) => {
+  const [mediaIndex, setMediaIndex] = useState(0);
   const date = new Date(post.createdAt as string) || new Date();
 
   return (
@@ -23,12 +25,18 @@ export const ModalContent = ({ username, post, onModalClose }: Props) => {
             <Image src="/user.jpg" alt={username} className={styles.DP} />
             <h1 className={styles.Username}>{username}</h1>
           </div>
-          <ModalPost caption={post.caption} medias={post.medias} />
+          <ModalPost
+            mediaIndex={mediaIndex}
+            setMediaIndex={setMediaIndex}
+            caption={post.caption}
+            medias={post.medias}
+          />
           <PostDetails
             username={username}
             caption={post.caption}
             medias={post.medias}
             date={date}
+            mediaIndex={mediaIndex}
           />
         </article>
       </section>

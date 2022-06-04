@@ -1,3 +1,4 @@
+import cx from "classnames";
 import { Media } from "../types";
 import { Image } from "../components";
 import { BsSuitHeartFill, BsFillBookmarkFill } from "react-icons/bs";
@@ -9,9 +10,16 @@ interface Props {
   caption: string;
   medias: Media[];
   date: Date;
+  mediaIndex: number;
 }
 
-export const PostDetails = ({ username, caption, date, medias }: Props) => {
+export const PostDetails = ({
+  username,
+  caption,
+  mediaIndex,
+  date,
+  medias,
+}: Props) => {
   const formattedDate = date.toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
@@ -29,7 +37,12 @@ export const PostDetails = ({ username, caption, date, medias }: Props) => {
         {medias.length > 1 && (
           <span className={styles.IndexWrapper}>
             {medias.map((_, i) => (
-              <span key={i} className={styles.IndexCircle} />
+              <span
+                key={i}
+                className={cx(styles.IndexCircle, {
+                  [styles.Current]: i === mediaIndex,
+                })}
+              />
             ))}
           </span>
         )}

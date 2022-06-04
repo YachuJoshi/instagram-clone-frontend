@@ -36,8 +36,11 @@
       height: 8px;
       width: 8px;
       border-radius: 20px;
-      background-color: #0a9eff;
-      content: '';
+      background-color: rgba($white-100, 0.4);
+
+      &.Current {
+        background-color: #0a9eff;
+      }
     }
   }
 
