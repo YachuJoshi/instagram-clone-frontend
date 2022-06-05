@@ -8,6 +8,7 @@ import {
 import { useRouter } from "next/router";
 import { AxiosBasicCredentials, AxiosError } from "axios";
 import { User } from "../types";
+import { api } from "../api";
 import { parseJWT, notify } from "../utils";
 import { login as loginUser } from "../services";
 
@@ -42,6 +43,16 @@ export const AuthProvider = ({ children }: Props) => {
     }
   }, []);
 
+  useEffect(() => {
+    api.interceptors.request.use((config) => {
+      const accessToken = localStorage.getItem("accessToken") || "";
+      if (config.headers) {
+        config.headers.Authorization = `Bearer ${accessToken}`;
+      }
+      return config;
+    });
+  }, [user]);
+
   const login = useCallback(
     async ({ username, password }: AxiosBasicCredentials) => {
       setLoading(true);
@@ -53,6 +64,7 @@ export const AuthProvider = ({ children }: Props) => {
         notify("success", "Login Successful!");
         void router.push("/");
       } catch (e) {
+        console.log(e);
         if (e instanceof AxiosError) {
           const responseError = e as AxiosError<string>;
           if (responseError?.response) {
