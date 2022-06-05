@@ -1,5 +1,5 @@
-import NextImage from "next/image";
 import cx from "classnames";
+import NextImage from "next/image";
 
 import styles from "./Image.module.scss";
 

@@ -3,6 +3,7 @@ import { Modal } from "../modal";
 import { withAuth } from "../auth";
 import { User, Post } from "../types";
 import { MainLayout } from "../layout";
+import { ModalContent } from "../modal";
 import { Container } from "../components";
 import { ProfileHeader, Posts } from "../profile";
 
@@ -31,11 +32,13 @@ export const Profile = withAuth(({ user }: Props) => {
   return (
     <>
       {selectedPostID && (
-        <Modal
-          post={selectedPost}
-          username={user.username}
-          onModalClose={onModalClose}
-        />
+        <Modal>
+          <ModalContent
+            post={selectedPost}
+            username={user.username}
+            onModalClose={onModalClose}
+          />
+        </Modal>
       )}
       <MainLayout title={pageTitle}>
         <Container className={styles.Container}>
