@@ -32,12 +32,8 @@ export const Profile = withAuth(({ user }: Props) => {
   return (
     <>
       {selectedPostID && (
-        <Modal>
-          <ModalContent
-            post={selectedPost}
-            username={user.username}
-            onModalClose={onModalClose}
-          />
+        <Modal onModalClose={onModalClose}>
+          <ModalContent post={selectedPost} username={user.username} />
         </Modal>
       )}
       <MainLayout title={pageTitle}>
