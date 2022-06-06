@@ -1,16 +1,34 @@
-import { useState } from "react";
-import { api } from "../api";
+import { useState, useEffect } from "react";
 import { notify } from "../utils";
 import { withAuth } from "../auth";
 import { MainLayout } from "../layout";
+import { createPost } from "../services";
 import { Container } from "../components";
 
 export const Home = withAuth(() => {
   const [caption, setCaption] = useState("HELLO");
+  const [previewURLs, setPreviewURLs] = useState<string[]>([]);
   const [selectedFiles, setSelectedFiles] = useState<FileList | null>(null);
 
+  useEffect(() => {
+    if (!selectedFiles) return;
+
+    const objectURLs: string[] = [];
+
+    setPreviewURLs(
+      Array.from(selectedFiles).map((file) => {
+        const url = URL.createObjectURL(file);
+        objectURLs.push(url);
+        return url;
+      })
+    );
+
+    return () =>
+      objectURLs.forEach((objectURL) => URL.revokeObjectURL(objectURL));
+  }, [selectedFiles]);
+
   function onChange(e: React.ChangeEvent<HTMLInputElement>) {
-    if (!e.target.files) return;
+    if (!e.target.files || e.target.files.length === 0) return;
 
     if (e.target.files.length > 4) {
       return notify("error", "Only 4 files are allowed");
@@ -32,7 +50,7 @@ export const Home = withAuth(() => {
     }
 
     try {
-      await api.post("/posts/create", formData);
+      await createPost(formData);
       notify("success", "Upload Successful!");
     } catch (e) {
       console.log(e);
@@ -52,6 +70,13 @@ export const Home = withAuth(() => {
           <button type="submit" disabled={selectedFiles === null}>
             Submit
           </button>
+          {selectedFiles && (
+            <div>
+              {previewURLs.map((url) => (
+                <img key={url} alt="PIC" src={url} />
+              ))}
+            </div>
+          )}
         </form>
       </Container>
     </MainLayout>
