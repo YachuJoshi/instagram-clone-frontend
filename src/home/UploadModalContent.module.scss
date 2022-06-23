@@ -26,13 +26,23 @@
   .FormHeader {
     margin-bottom: 20px;
 
-    .FormHeading {
-      font-size: 18px;
-      text-align: center;
-      margin-bottom: 20px;
+    .FormHeaderGroup {
+      display: flex;
+      justify-content: center;
 
-      @include media-breakpoint-up(md) {
-        font-size: 20px;
+      &.Selected {
+        align-items: baseline;
+        justify-content: space-between;
+      }
+
+      .FormHeading {
+        font-size: 18px;
+        text-align: center;
+        margin-bottom: 20px;
+
+        @include media-breakpoint-up(md) {
+          font-size: 20px;
+        }
       }
     }
 
@@ -42,7 +52,7 @@
     }
   }
 
-  form {
+  .MainForm {
     height: 600px;
     display: flex;
     flex-flow: column;

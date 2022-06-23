@@ -4,17 +4,24 @@ import { notify } from "../utils";
 import NextImage from "next/image";
 import { useAuth } from "../context";
 import { createPost } from "../services";
-import { Container, Image } from "../components";
+import { Button, Container, Image } from "../components";
 
 import styles from "./UploadModalContent.module.scss";
 
-export const UploadModalContent = () => {
+interface Props {
+  selectedFiles: FileList | null;
+  setSelectedFiles: React.Dispatch<React.SetStateAction<FileList | null>>;
+}
+
+export const UploadModalContent = ({
+  selectedFiles,
+  setSelectedFiles,
+}: Props) => {
   const id = useId();
   const { user } = useAuth();
   const [index, setIndex] = useState(0);
   const [caption, setCaption] = useState("");
   const [previewURLs, setPreviewURLs] = useState<string[]>([]);
-  const [selectedFiles, setSelectedFiles] = useState<FileList | null>(null);
 
   useEffect(() => {
     if (!selectedFiles) return;
@@ -56,8 +63,9 @@ export const UploadModalContent = () => {
     }
 
     try {
-      // await createPost(formData);
+      await createPost(formData);
       notify("success", "Upload Successful!");
+      setSelectedFiles(null);
     } catch (e) {
       console.log(e);
     }
@@ -65,15 +73,31 @@ export const UploadModalContent = () => {
   return (
     <section className={styles.FormSection}>
       <Container className={styles.Container}>
-        <div className={styles.FormContainer}>
+        <form
+          className={styles.FormContainer}
+          encType="multipart/form-data"
+          onSubmit={(e) => handleSubmit(e)}
+        >
           <div className={styles.FormHeader}>
-            <h2 className={styles.FormHeading}>Create New Post</h2>
+            <div
+              className={cx(styles.FormHeaderGroup, {
+                [styles.Selected]: selectedFiles !== null,
+              })}
+            >
+              <h2 className={styles.FormHeading}>Create New Post</h2>
+              {selectedFiles && (
+                <Button
+                  type="submit"
+                  disabled={selectedFiles === null}
+                  className={styles.Button}
+                >
+                  Post
+                </Button>
+              )}
+            </div>
             <hr className={styles.Line} />
           </div>
-          <form encType="multipart/form-data" onSubmit={(e) => handleSubmit(e)}>
-            {/* <button type="submit" disabled={selectedFiles === null}o>
-              Submit
-            </button> */}
+          <div className={styles.MainForm}>
             {!selectedFiles ? (
               <>
                 <div className={styles.MediaFigure}>
@@ -163,8 +187,8 @@ export const UploadModalContent = () => {
                 </div>
               </div>
             )}
-          </form>
-        </div>
+          </div>
+        </form>
       </Container>
     </section>
   );
