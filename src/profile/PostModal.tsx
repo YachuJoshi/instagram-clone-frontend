@@ -5,15 +5,17 @@ import { Image } from "../components";
 import { ModalPost } from "./ModalPost";
 import { PostDetails } from "./PostDetails";
 
-import styles from "./ModalContent.module.scss";
+import styles from "./PostModal.module.scss";
 
 interface Props {
   username: string;
   post: Post;
 }
 
-export const ModalContent = ({ username, post }: Props) => {
+export const PostModal = ({ username, post }: Props) => {
   const [mediaIndex, setMediaIndex] = useState(0);
+
+  if (!post) return null;
   const date = new Date(post.createdAt as string) || new Date();
 
   return (

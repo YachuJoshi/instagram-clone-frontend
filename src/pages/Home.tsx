@@ -11,11 +11,12 @@ export const Home = withAuth(() => {
   return (
     <MainLayout title="Home Page">
       <Container>
-        {isModalOpen && (
-          <Modal onModalClose={() => setIsModalOpen(false)}>
-            <UploadModalContent />
-          </Modal>
-        )}
+        <Modal
+          isModalOpen={isModalOpen}
+          onModalClose={() => setIsModalOpen(false)}
+        >
+          <UploadModalContent />
+        </Modal>
         <Button onClick={() => setIsModalOpen(true)}>Upload</Button>
       </Container>
     </MainLayout>
