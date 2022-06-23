@@ -16,7 +16,7 @@
   .FormContainer {
     position: relative;
     width: 100%;
-    height: 600px;
+    height: 700px;
     z-index: 15;
     background: $black-200;
     border-radius: 20px;
@@ -30,6 +30,10 @@
       font-size: 18px;
       text-align: center;
       margin-bottom: 20px;
+
+      @include media-breakpoint-up(md) {
+        font-size: 20px;
+      }
     }
 
     .Line {
@@ -39,7 +43,7 @@
   }
 
   form {
-    height: 500px;
+    height: 600px;
     display: flex;
     flex-flow: column;
     align-items: center;
@@ -84,20 +88,93 @@
 
 .Preview {
   display: flex;
+  flex-flow: column;
+  gap: 12px;
   height: 100%;
   width: 100%;
-  flex: 1;
-  overflow: hidden;
 
-  .PreviewContainer {
+  @include media-breakpoint-up(lg) {
+    flex-flow: row;
+    gap: 20px;
+  }
+
+  .MediaContainer {
     display: flex;
-    flex: 0 0 100%;
-    border-radius: 10px;
+    height: 100%;
     overflow: hidden;
-    transition: all 0.2s ease-in-out;
+    flex: 0 1 80%;
 
-    &>* {
+    @include media-breakpoint-up(lg) {
+      width: 65%;
+      flex: 0 1 65%;
+    }
+
+    .PreviewFigure {
+      display: flex;
+      height: 100%;
       flex: 0 0 100%;
+      transition: all 0.2s ease-in-out;
+
+      &>* {
+        flex: 1;
+      }
+    }
+  }
+
+  .MediaDetails {
+    flex: 0 1 20%;
+    display: flex;
+    flex-flow: column;
+    gap: 12px;
+
+    @include media-breakpoint-up(lg) {
+      width: 35%;
+      flex: 0 1 35%;
+      gap: 20px;
+    }
+
+    .UserDetails {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      .UserImage {
+        border-radius: 50%;
+        height: 40px;
+        width: 40px;
+        overflow: hidden;
+      }
+
+      .UserName {
+
+        @include media-breakpoint-up(md) {
+          font-size: 17px;
+        }
+      }
+    }
+
+    .Caption {
+      flex: 1;
+      background: transparent;
+      border: 1px solid $black-300;
+      padding: 20px;
+      outline: none;
+      color: $white-200;
+      font-size: 14px;
+      font-family: inherit;
+      resize: none;
+
+      @include media-breakpoint-up(sm) {
+        font-size: 15px;
+      }
+
+      @include media-breakpoint-up(md) {
+        font-size: 16px;
+      }
+
+      @include media-breakpoint-up(lg) {
+        flex: 0 1 40%;
+      }
     }
   }
 }
@@ -106,7 +183,7 @@
   cursor: pointer;
   position: absolute;
   z-index: 10;
-  top: 50%;
+  top: 45%;
   transform: translateY(-50%);
   height: 28px;
   width: 28px;
@@ -114,13 +191,26 @@
   border: none;
   background-color: transparent;
 
+  @include media-breakpoint-up(lg) {
+    top: 50%;
+  }
+
   &.Left {
     left: 12px;
     transform: translateY(-50%) rotate(180deg);
+
+    @include media-breakpoint-up(lg) {
+      left: 24px;
+    }
   }
 
   &.Right {
     right: 12px;
+
+    @include media-breakpoint-up(lg) {
+      right: 38%;
+      transform: translateX(-50%) translateY(-50%);
+    }
   }
 
   &.Hidden {

@@ -1,17 +1,18 @@
 import { useState, useEffect, useId } from "react";
 import cx from "classnames";
-import NextImage from "next/image";
 import { notify } from "../utils";
-import { Container, Image } from "../components";
+import NextImage from "next/image";
+import { useAuth } from "../context";
 import { createPost } from "../services";
+import { Container, Image } from "../components";
 
 import styles from "./UploadModalContent.module.scss";
 
 export const UploadModalContent = () => {
   const id = useId();
+  const { user } = useAuth();
   const [index, setIndex] = useState(0);
-  const [formStep, setFormStep] = useState(0);
-  const [caption, setCaption] = useState("Hello");
+  const [caption, setCaption] = useState("");
   const [previewURLs, setPreviewURLs] = useState<string[]>([]);
   const [selectedFiles, setSelectedFiles] = useState<FileList | null>(null);
 
@@ -97,51 +98,69 @@ export const UploadModalContent = () => {
               </>
             ) : (
               <div className={styles.Preview}>
-                <button
-                  type="button"
-                  className={cx(styles.Arrow, styles.Left, {
-                    [styles.Hidden]: index === 0,
-                  })}
-                  onClick={() => setIndex((index) => index - 1)}
-                >
-                  <NextImage
-                    src="/arrow.svg"
-                    alt="Right Arrow"
-                    height="30"
-                    width="30"
-                  />
-                </button>
-                {previewURLs.map((url) => (
-                  <figure
-                    key={url}
-                    className={styles.PreviewContainer}
-                    style={{
-                      transform: `translate3d(calc(-${index}*100%), 0, 0)`,
-                    }}
+                <div className={styles.MediaContainer}>
+                  <button
+                    type="button"
+                    className={cx(styles.Arrow, styles.Left, {
+                      [styles.Hidden]: index === 0,
+                    })}
+                    onClick={() => setIndex((index) => index - 1)}
                   >
                     <NextImage
-                      src={url}
-                      alt="Image"
-                      width="100%"
-                      height="100%"
-                      objectFit="contain"
+                      src="/arrowDark.svg"
+                      alt="Right Arrow"
+                      height="30"
+                      width="30"
                     />
-                  </figure>
-                ))}
-                <button
-                  type="button"
-                  className={cx(styles.Arrow, styles.Right, {
-                    [styles.Hidden]: index === previewURLs.length - 1,
-                  })}
-                  onClick={() => setIndex((index) => index + 1)}
-                >
-                  <NextImage
-                    src="/arrow.svg"
-                    alt="Right Arrow"
-                    height="30"
-                    width="30"
+                  </button>
+                  {previewURLs.map((url) => (
+                    <figure
+                      key={url}
+                      className={styles.PreviewFigure}
+                      style={{
+                        transform: `translate3d(calc(-${index}*100%), 0, 0)`,
+                      }}
+                    >
+                      <NextImage
+                        src={url}
+                        alt="Image"
+                        width="100%"
+                        height="100%"
+                        objectFit="contain"
+                      />
+                    </figure>
+                  ))}
+                  <button
+                    type="button"
+                    className={cx(styles.Arrow, styles.Right, {
+                      [styles.Hidden]: index === previewURLs.length - 1,
+                    })}
+                    onClick={() => setIndex((index) => index + 1)}
+                  >
+                    <NextImage
+                      src="/arrowDark.svg"
+                      alt="Right Arrow"
+                      height="30"
+                      width="30"
+                    />
+                  </button>
+                </div>
+                <div className={styles.MediaDetails}>
+                  <div className={styles.UserDetails}>
+                    <Image
+                      src="/user.jpg"
+                      alt="User"
+                      className={styles.UserImage}
+                    />
+                    <h2 className={styles.UserName}>{user.username}</h2>
+                  </div>
+                  <textarea
+                    value={caption}
+                    className={styles.Caption}
+                    placeholder="Write a caption...."
+                    onChange={(e) => setCaption(e.target.value)}
                   />
-                </button>
+                </div>
               </div>
             )}
           </form>
