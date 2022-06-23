@@ -1,0 +1,30 @@
+@import '../../styles/main.scss';
+
+.FormHeader {
+  margin-bottom: 20px;
+
+  .FormHeaderGroup {
+    display: flex;
+    justify-content: center;
+
+    &.Selected {
+      align-items: baseline;
+      justify-content: space-between;
+    }
+
+    .FormHeading {
+      font-size: 18px;
+      text-align: center;
+      margin-bottom: 20px;
+
+      @include media-breakpoint-up(md) {
+        font-size: 20px;
+      }
+    }
+  }
+
+  .Line {
+    border: 1px solid #3a3a3a;
+    margin: 0 auto;
+  }
+}

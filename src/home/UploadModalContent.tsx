@@ -1,13 +1,12 @@
 import { useState, useEffect, useId } from "react";
-import cx from "classnames";
 import { notify } from "../utils";
-import NextImage from "next/image";
-import { useAuth } from "../context";
 import { createPost } from "../services";
-import { Button, Container, Image } from "../components";
+import { Container } from "../components";
+import { FormHeader } from "./FormHeader";
+import { MediaPreview } from "./MediaPreview";
+import { FormPlaceholder } from "./FormPlaceholder";
 
 import styles from "./UploadModalContent.module.scss";
-
 interface Props {
   selectedFiles: FileList | null;
   setSelectedFiles: React.Dispatch<React.SetStateAction<FileList | null>>;
@@ -18,8 +17,6 @@ export const UploadModalContent = ({
   setSelectedFiles,
 }: Props) => {
   const id = useId();
-  const { user } = useAuth();
-  const [index, setIndex] = useState(0);
   const [caption, setCaption] = useState("");
   const [previewURLs, setPreviewURLs] = useState<string[]>([]);
 
@@ -72,120 +69,22 @@ export const UploadModalContent = ({
   }
   return (
     <section className={styles.FormSection}>
-      <Container className={styles.Container}>
+      <Container className={styles.FormContainer}>
         <form
-          className={styles.FormContainer}
+          className={styles.Form}
           encType="multipart/form-data"
           onSubmit={(e) => handleSubmit(e)}
         >
-          <div className={styles.FormHeader}>
-            <div
-              className={cx(styles.FormHeaderGroup, {
-                [styles.Selected]: selectedFiles !== null,
-              })}
-            >
-              <h2 className={styles.FormHeading}>Create New Post</h2>
-              {selectedFiles && (
-                <Button
-                  type="submit"
-                  disabled={selectedFiles === null}
-                  className={styles.Button}
-                >
-                  Post
-                </Button>
-              )}
-            </div>
-            <hr className={styles.Line} />
-          </div>
+          <FormHeader selectedFiles={selectedFiles} />
           <div className={styles.MainForm}>
             {!selectedFiles ? (
-              <>
-                <div className={styles.MediaFigure}>
-                  <Image
-                    src="/media.svg"
-                    alt="Media"
-                    className={styles.MediaImage}
-                  />
-                  <figcaption>Upload Pictures / Videos</figcaption>
-                </div>
-                <label htmlFor={id} className={styles.UploadLabel}>
-                  Select From Computer
-                </label>
-                <input
-                  id={id}
-                  type="file"
-                  name="images"
-                  multiple
-                  onChange={onChange}
-                  className={styles.UploadButton}
-                />
-              </>
+              <FormPlaceholder id={id} onChange={onChange} />
             ) : (
-              <div className={styles.Preview}>
-                <div className={styles.MediaContainer}>
-                  <button
-                    type="button"
-                    className={cx(styles.Arrow, styles.Left, {
-                      [styles.Hidden]: index === 0,
-                    })}
-                    onClick={() => setIndex((index) => index - 1)}
-                  >
-                    <NextImage
-                      src="/arrowDark.svg"
-                      alt="Right Arrow"
-                      height="30"
-                      width="30"
-                    />
-                  </button>
-                  {previewURLs.map((url) => (
-                    <figure
-                      key={url}
-                      className={styles.PreviewFigure}
-                      style={{
-                        transform: `translate3d(calc(-${index}*100%), 0, 0)`,
-                      }}
-                    >
-                      <NextImage
-                        src={url}
-                        alt="Image"
-                        width="100%"
-                        height="100%"
-                        objectFit="contain"
-                      />
-                    </figure>
-                  ))}
-                  <button
-                    type="button"
-                    className={cx(styles.Arrow, styles.Right, {
-                      [styles.Hidden]: index === previewURLs.length - 1,
-                    })}
-                    onClick={() => setIndex((index) => index + 1)}
-                  >
-                    <NextImage
-                      src="/arrowDark.svg"
-                      alt="Right Arrow"
-                      height="30"
-                      width="30"
-                    />
-                  </button>
-                </div>
-                <div className={styles.MediaDetails}>
-                  <div className={styles.UserDetails}>
-                    <Image
-                      src="/user.jpg"
-                      alt="User"
-                      className={styles.UserImage}
-                    />
-                    <h2 className={styles.UserName}>{user.username}</h2>
-                  </div>
-                  <textarea
-                    value={caption}
-                    className={styles.Caption}
-                    placeholder="Write a caption...."
-                    onChange={(e) => setCaption(e.target.value)}
-                  />
-                </div>
-              </div>
+              <MediaPreview
+                caption={caption}
+                setCaption={setCaption}
+                previewURLs={previewURLs}
+              />
             )}
           </div>
         </form>

@@ -1,0 +1,36 @@
+@import '../../styles/main.scss';
+
+.MediaFigure {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  gap: 12px;
+
+  .MediaImage {
+    height: 100px;
+    width: 100px;
+  }
+}
+
+.UploadLabel {
+  $button-color: #007AC5;
+
+  cursor: pointer;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: $white-100;
+  padding: 10px 24px;
+  font-family: inherit;
+  background-color: $button-color, ;
+  transition: all 0.2s ease-out;
+
+  &:hover {
+    background-color: darken($button-color, 8);
+  }
+
+}
+
+.UploadButton {
+  display: none;
+}
