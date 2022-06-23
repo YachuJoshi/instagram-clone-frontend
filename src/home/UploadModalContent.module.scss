@@ -39,8 +39,8 @@
   }
 
   form {
+    height: 500px;
     display: flex;
-    justify-content: space-between;
     flex-flow: column;
     align-items: center;
     gap: 40px;
@@ -79,5 +79,51 @@
     .UploadButton {
       display: none;
     }
+  }
+}
+
+.Preview {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex: 1;
+  overflow: hidden;
+
+  .PreviewContainer {
+    display: flex;
+    flex: 0 0 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.2s ease-in-out;
+
+    &>* {
+      flex: 0 0 100%;
+    }
+  }
+}
+
+.Arrow {
+  cursor: pointer;
+  position: absolute;
+  z-index: 10;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 28px;
+  width: 28px;
+  outline: none;
+  border: none;
+  background-color: transparent;
+
+  &.Left {
+    left: 12px;
+    transform: translateY(-50%) rotate(180deg);
+  }
+
+  &.Right {
+    right: 12px;
+  }
+
+  &.Hidden {
+    display: none;
   }
 }

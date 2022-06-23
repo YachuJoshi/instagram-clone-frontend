@@ -19,12 +19,17 @@ export const MainLayout = ({ title = "", children }: LayoutProps) => {
       <Head>
         <title>{title}</title>
       </Head>
-      {!isLogin && <TopNavBar />}
+      {!isLogin && (
+        <>
+          <TopNavBar />
+        </>
+      )}
       <main
         className={cx(styles.Main, {
           [styles.Login]: isLogin,
         })}
       >
+        {!isLogin && <hr className={styles.Line} />}
         {children}
       </main>
       {!isLogin && <BottomNav />}

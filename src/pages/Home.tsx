@@ -2,15 +2,17 @@ import { useState } from "react";
 import { Modal } from "../modal";
 import { withAuth } from "../auth";
 import { MainLayout } from "../layout";
+import { UploadModalContent } from "../home";
 import { Button, Container } from "../components";
-import { UploadModalContent } from "src/home";
+
+import styles from "./Home.module.scss";
 
 export const Home = withAuth(() => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <MainLayout title="Home Page">
-      <Container>
+      <Container className={styles.Container}>
         <Modal
           isModalOpen={isModalOpen}
           onModalClose={() => setIsModalOpen(false)}

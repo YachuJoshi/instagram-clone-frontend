@@ -1,5 +1,10 @@
 @import '../../styles/main.scss';
 
+.Line {
+  border: 1px solid $black-300;
+  margin-bottom: 20px;
+}
+
 .Main {
   padding-top: 90px;
 
